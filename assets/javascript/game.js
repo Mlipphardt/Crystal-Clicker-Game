@@ -1,11 +1,15 @@
 $(document).ready(function() {
 
 
-var goalnumber = 0;
-var goaltext = $("#goaltext");
+let goalnumber = 0;
+
+$("#goalnumbertext");
+
+
 
 goalnumber = (Math.floor(Math.random() * 101) + 19);
 console.log(goalnumber);
+$("#goalnumbertext").text(goalnumber);
 
 $('.testimonial').each(function(i, obj) {
     //test
