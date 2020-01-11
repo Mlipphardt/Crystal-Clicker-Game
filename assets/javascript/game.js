@@ -18,13 +18,23 @@ function resetGame() {
         let crystalValue = (Math.floor(Math.random() * 11) + 1);
         $(crystal).attr("value", crystalValue);
     });
+
+//Reset scores
+    score = 0;
 }
 
 resetGame();
 
 $(".crystal").on("click", function(){
     score += parseInt($(this).attr("value"));
-    console.log(score); 
+    console.log(score);
+    if(score == goalnumber){
+        alert("You win, well done!")
+        resetGame();
+    } else if(score > goalnumber){
+        alert("B-B-B-Busted! Try again!")
+        resetGame();
+    }
 }
 
 )
