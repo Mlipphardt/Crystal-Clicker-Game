@@ -3,12 +3,22 @@ $(document).ready(function() {
 
 let goalnumber = 0;
 let score = 0;
+let losses = 0;
+let wins = 0;
+let gamesPlayed = 0;
+let gameComplete = false;
 
 $("#goalnumbertext");
+
+function addGame(){
+    gamesPlayed++;
+    $("#gamesPlayedText").text(gamesPlayed);
+}
 
 //Function to reset game
 function resetGame() {
 //Generates goal value, updates information for user
+    $("#resultsText").text("")
     goalnumber = (Math.floor(Math.random() * 101) + 19);
     console.log(goalnumber);
     $("#goalnumbertext").text(goalnumber);
@@ -21,24 +31,27 @@ function resetGame() {
 
 //Reset scores
     score = 0;
+    gameComplete = false;
 }
 
 resetGame();
 
 $(".crystal").on("click", function(){
-    score += parseInt($(this).attr("value"));
-    $("#scoreText").text(score);
-    if(score == goalnumber){
-        alert("You win, well done!")
-        resetGame();
-    } else if(score > goalnumber){
-        alert("B-B-B-Busted! Try again!")
-        resetGame();
+    if(!gameComplete){
+        score += parseInt($(this).attr("value"));
+        $("#scoreText").text(score);
+        if(score == goalnumber){
+            $("#resultsText").text("You win, well done!");
+            wins++;
+            $("#winsText").text(wins);
+            gameComplete = true;
+        } else if(score > goalnumber){
+            $("#resultsText").text("B-b-b-busted! Try again!");
+            losses++;
+            $("#lossesText").text(losses);
+            gameComplete = true;
+        }
+    } else{
+    resetGame();
     }
-}
-
-)
-
-
-
-})
+}) })
