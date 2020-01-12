@@ -27,7 +27,7 @@ resetGame();
 
 $(".crystal").on("click", function(){
     score += parseInt($(this).attr("value"));
-    console.log(score);
+    $("#scoreText").text(score);
     if(score == goalnumber){
         alert("You win, well done!")
         resetGame();
