@@ -41,14 +41,16 @@ $(".crystal").on("click", function(){
         score += parseInt($(this).attr("value"));
         $("#scoreText").text(score);
         if(score == goalnumber){
-            $("#resultsText").text("You win, well done!");
+            $("#resultsText").text("You win, well done! Click a crystal to play again!");
             wins++;
             $("#winsText").text(wins);
+            addGame();
             gameComplete = true;
         } else if(score > goalnumber){
-            $("#resultsText").text("B-b-b-busted! Try again!");
+            $("#resultsText").text("B-b-b-busted! Click a crystal to try again!");
             losses++;
             $("#lossesText").text(losses);
+            addGame();
             gameComplete = true;
         }
     } else{
